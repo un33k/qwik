@@ -62,9 +62,9 @@
 	"useBrowserVisibleTask": {
 		"scope": "javascriptreact,typescriptreact",
 		"prefix": "quseBrowserVisibleTask",
-		"description": "useVisibleTask$() function hook",
+		"description": "useDocumentTask$() function hook",
 		"body": [
-			"useVisibleTask$(({ track }) => {",
+			"useDocumentTask$(({ track }) => {",
 			"  $0",
 			"});",
 			""

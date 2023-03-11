@@ -1,7 +1,7 @@
 /* eslint-disable */
 import {
   component$,
-  useVisibleTask$,
+  useDocumentTask$,
   useClientEffect$,
   useRef,
   useStore,
@@ -56,13 +56,13 @@ export const Timer = component$(() => {
   });
 
   // Double count watch
-  useVisibleTask$(() => {
+  useDocumentTask$(() => {
     state.msg = 'run';
     container.current!.setAttribute('data-effect', 'true');
   });
 
   // Double count watch
-  useVisibleTask$(() => {
+  useDocumentTask$(() => {
     state.count = 10;
     const timer = setInterval(() => {
       state.count++;
@@ -88,7 +88,7 @@ export const Eager = component$(() => {
   });
 
   // Double count watch
-  useVisibleTask$(
+  useDocumentTask$(
     () => {
       state.msg = 'run';
     },
@@ -114,7 +114,7 @@ export const ClientSide = component$(() => {
     text3: 'empty 3',
   });
 
-  useVisibleTask$(
+  useDocumentTask$(
     () => {
       state.text1 = 'run';
     },
@@ -123,11 +123,11 @@ export const ClientSide = component$(() => {
     }
   );
 
-  useVisibleTask$(() => {
+  useDocumentTask$(() => {
     state.text2 = 'run';
   });
 
-  useVisibleTask$(
+  useDocumentTask$(
     () => {
       state.text3 = 'run';
     },
@@ -147,7 +147,7 @@ export const ClientSide = component$(() => {
 
 export const FancyName = component$(() => {
   console.log('Fancy Name');
-  useVisibleTask$(() => {
+  useDocumentTask$(() => {
     console.log('Client effect fancy name');
   });
   return <Slot />;
@@ -156,7 +156,7 @@ export const FancyName = component$(() => {
 export const fancyName = 'Some';
 
 export const Issue1413 = component$(() => {
-  useVisibleTask$(() => {
+  useDocumentTask$(() => {
     console.log(fancyName);
   });
   console.log('Root route');
@@ -171,7 +171,7 @@ export const Issue1413 = component$(() => {
 
 export function useDelay(value: string) {
   const ready = useSignal('---');
-  useVisibleTask$(() => {
+  useDocumentTask$(() => {
     ready.value = value;
   });
   return ready;
@@ -208,19 +208,19 @@ export const Issue2015 = component$(() => {
     logs: [] as string[],
   });
 
-  useVisibleTask$(async () => {
+  useDocumentTask$(async () => {
     state.logs.push('start 1');
     await delay(100);
     state.logs.push('finish 1');
   });
 
-  useVisibleTask$(async () => {
+  useDocumentTask$(async () => {
     state.logs.push('start 2');
     await delay(100);
     state.logs.push('finish 2');
   });
 
-  useVisibleTask$(async () => {
+  useDocumentTask$(async () => {
     state.logs.push('start 3');
     await delay(100);
     state.logs.push('finish 3');

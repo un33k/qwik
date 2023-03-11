@@ -705,6 +705,6 @@ pub fn might_need_handle_watch(ctx_kind: &HookKind, ctx_name: &str) -> bool {
     }
     matches!(
         ctx_name,
-        "useTask$" | "useVisibleTask$" | "useBrowserVisibleTask$" | "useClientEffect$" | "$"
+        "useTask$" | "useDocumentTask$" | "useBrowserVisibleTask$" | "useClientEffect$" | "$"
     )
 }

@@ -1,4 +1,4 @@
-import { component$, useStore, useStyles$, useVisibleTask$ } from '@builder.io/qwik';
+import { component$, useStore, useStyles$, useDocumentTask$ } from '@builder.io/qwik';
 import styles from './clock.css?inline';
 
 interface ClockStore {
@@ -15,7 +15,7 @@ export const Clock = component$(() => {
     second: 0,
   });
 
-  useVisibleTask$(() => {
+  useDocumentTask$(() => {
     // Put code here to periodically call updateClock().
   });
 

@@ -242,7 +242,7 @@
       },
       {
         "id": "use-visible-task",
-        "title": "useVisibleTask$()",
+        "title": "useDocumentTask$()",
         "enableHtmlOutput": false,
         "enableClientOutput": false,
         "enableSsrOutput": false

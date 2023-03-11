@@ -1,10 +1,10 @@
-import { component$, useVisibleTask$, useStore } from '@builder.io/qwik';
+import { component$, useDocumentTask$, useStore } from '@builder.io/qwik';
 import type { RequestHandler } from '@builder.io/qwik-city';
 
 export default component$(() => {
   const store = useStore({ timestamp: '', os: '', arch: '', node: '' });
 
-  useVisibleTask$(async () => {
+  useDocumentTask$(async () => {
     const url = `/qwikcity-test/api/builder.io/oss.json`;
     const rsp = await fetch(url);
     const data: any = await rsp.json();

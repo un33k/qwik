@@ -439,7 +439,7 @@ export const useWatchQrl = /*#__PURE__*/ useTaskQrl;
  *     count: 0,
  *   });
  *
- *   useVisibleTask$(() => {
+ *   useDocumentTask$(() => {
  *     // Only runs in the client
  *     const timer = setInterval(() => {
  *       store.count++;
@@ -490,7 +490,7 @@ export const useVisibleTaskQrl = (qrl: QRL<TaskFn>, opts?: OnVisibleTaskOptions)
  *     count: 0,
  *   });
  *
- *   useVisibleTask$(() => {
+ *   useDocumentTask$(() => {
  *     // Only runs in the client
  *     const timer = setInterval(() => {
  *       store.count++;
@@ -507,31 +507,31 @@ export const useVisibleTaskQrl = (qrl: QRL<TaskFn>, opts?: OnVisibleTaskOptions)
  * @public
  */
 // </docs>
-export const useVisibleTask$ = /*#__PURE__*/ implicit$FirstArg(useVisibleTaskQrl);
+export const useDocumentTask$ = /*#__PURE__*/ implicit$FirstArg(useVisibleTaskQrl);
 
 /**
  * @alpha
- * @deprecated - use `useVisibleTask$()` instead
+ * @deprecated - use `useDocumentTask$()` instead
  */
 export const useClientEffectQrl = useVisibleTaskQrl;
 
 /**
  * @alpha
- * @deprecated - use `useVisibleTask$()` instead
+ * @deprecated - use `useDocumentTask$()` instead
  */
-export const useClientEffect$ = useVisibleTask$;
+export const useClientEffect$ = useDocumentTask$;
 
 /**
  * @alpha
- * @deprecated - use `useVisibleTask$()` instead
+ * @deprecated - use `useDocumentTask$()` instead
  */
 export const useBrowserVisibleTaskQrl = useVisibleTaskQrl;
 
 /**
  * @alpha
- * @deprecated - use `useVisibleTask$()` instead
+ * @deprecated - use `useDocumentTask$()` instead
  */
-export const useBrowserVisibleTask$ = useVisibleTask$;
+export const useBrowserVisibleTask$ = useDocumentTask$;
 
 export type WatchDescriptor = DescriptorBase<TaskFn>;
 

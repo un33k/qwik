@@ -1066,7 +1066,7 @@ export const useTaskQrl: (qrl: QRL<TaskFn>, opts?: UseTaskOptions) => void;
 export const useUserContext: typeof useServerData;
 
 // @public
-export const useVisibleTask$: (first: TaskFn, opts?: OnVisibleTaskOptions | undefined) => void;
+export const useDocumentTask$: (first: TaskFn, opts?: OnVisibleTaskOptions | undefined) => void;
 
 // @public
 export const useVisibleTaskQrl: (qrl: QRL<TaskFn>, opts?: OnVisibleTaskOptions) => void;

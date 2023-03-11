@@ -7,16 +7,16 @@ contributors:
 
 # No-Hydration Tips
 
-## Don't register events eagerly with `useVisibleTask$()`
+## Don't register events eagerly with `useDocumentTask$()`
 
-> ⚠ Use `useVisibleTask$()` with caution ⚠
+> ⚠ Use `useDocumentTask$()` with caution ⚠
 
 Instead => `useOn()` methods
 
 **Best Practice**:
 
 ```ts
-useVisibleTask$(() => {
+useDocumentTask$(() => {
   const listener = (event) => {
     const mouseEvent = event as MouseEvent;
     console.log(mouseEvent.x, mouseEvent.y);
@@ -67,7 +67,7 @@ Instead => `useLocation()`
 **Best Practice**:
 
 ```ts
-useVisibleTask$(()=> {
+useDocumentTask$(()=> {
     if (window.location.href).includes('foo') {
         //... do the thing
     }

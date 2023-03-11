@@ -1,4 +1,4 @@
-import { $, component$, useStyles$, useStore, useVisibleTask$ } from '@builder.io/qwik';
+import { $, component$, useStyles$, useStore, useDocumentTask$ } from '@builder.io/qwik';
 import type { RequestHandler } from '@builder.io/qwik-city';
 import { Repl } from '../../repl/repl';
 import { Header } from '../../components/header/header';
@@ -32,7 +32,7 @@ export default component$(() => {
     list: ['Input', 'Output', 'Console'],
   }));
 
-  useVisibleTask$(() => {
+  useDocumentTask$(() => {
     // run once on the client
     const shareData = parsePlaygroundShareUrl(location.hash.slice(1));
     if (shareData) {
@@ -43,7 +43,7 @@ export default component$(() => {
     }
   });
 
-  useVisibleTask$(({ track }) => {
+  useDocumentTask$(({ track }) => {
     track(() => store.buildId);
     track(() => store.buildMode);
     track(() => store.entryStrategy);

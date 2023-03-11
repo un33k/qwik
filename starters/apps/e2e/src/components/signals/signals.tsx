@@ -5,7 +5,7 @@ import {
   Signal,
   useSignal,
   useStore,
-  useVisibleTask$,
+  useDocumentTask$,
   useTask$,
   Slot,
   useStyles$,
@@ -42,7 +42,7 @@ export const Signals = component$(() => {
 
   const styles = useSignal('body { background: white}');
 
-  useVisibleTask$(() => {
+  useDocumentTask$(() => {
     ref.current!.setAttribute('data-set', 'ref');
     ref2.value!.setAttribute('data-set', 'ref2');
   });
