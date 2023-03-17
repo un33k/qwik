@@ -28,6 +28,7 @@ export const functionToString = (fn: Function, execute = true): string => {
  * @param fns - List of functions or strings
  * @param execute - Whether to execute the functions
  * @returns String
+ * @public
  */
 export const combineInlines = (fns: (string | Function)[], execute = true): string => {
   const toStr = fns.reduce((acc: string, fn: string | Function) => {
