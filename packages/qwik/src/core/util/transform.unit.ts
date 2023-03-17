@@ -38,7 +38,7 @@ functionToStringSuite('throw error for arrow function to string', () => {
 });
 
 const combineInlinesSuite = suite('combineInlines');
-combineInlinesSuite('combine two functions', () => {
+combineInlinesSuite('combine two functions, to be executed in order', () => {
   function addFunc(): number {
     return 1 + 2;
   }
@@ -47,6 +47,18 @@ combineInlinesSuite('combine two functions', () => {
   }
   const actual = combineInlines([addFunc, subFunc]);
   const expected = `function addFunc(){return 1+2} addFunc(); function subFunc(){return 1-2} subFunc(); \n`;
+  equal(actual.replace(/\s+/g, ' '), expected.replace(/\s+/g, ' '));
+});
+
+combineInlinesSuite('combine two functions without execution option', () => {
+  function addFunc(): number {
+    return 1 + 2;
+  }
+  function subFunc(): number {
+    return 1 - 2;
+  }
+  const actual = combineInlines([addFunc, subFunc], false);
+  const expected = `function addFunc(){return 1+2} function subFunc(){return 1-2}\n`;
   equal(actual.replace(/\s+/g, ' '), expected.replace(/\s+/g, ' '));
 });
 
