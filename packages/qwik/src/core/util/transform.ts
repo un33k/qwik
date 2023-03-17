@@ -29,14 +29,14 @@ export const functionToString = (fn: Function, execute = true): string => {
  * @param execute - Whether to execute the functions
  * @returns String
  */
-export const combineExecutables = (fns: (string | Function)[], execute = true): string => {
+export const combineInlines = (fns: (string | Function)[], execute = true): string => {
   const toStr = fns.reduce((acc: string, fn: string | Function) => {
     if (typeof fn === 'function') {
       return `${acc}${functionToString(fn, execute)}`;
     } else if (typeof fn === 'string') {
       return `${acc}${fn}`;
     }
-    throw new Error('Invalid argument type for combineExecutables');
+    throw new Error('Invalid argument type for combineInlines');
   }, '');
 
   return toStr.replace(/\s+/g, ' ').trim() + '\n';

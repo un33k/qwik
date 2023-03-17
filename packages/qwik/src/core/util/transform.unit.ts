@@ -1,6 +1,6 @@
 import { suite } from 'uvu';
 import { equal, throws } from 'uvu/assert';
-import { combineExecutables, functionToString } from './transform';
+import { combineInlines, functionToString } from './transform';
 
 const functionToStringSuite = suite('functionToString');
 functionToStringSuite('convert a function to a string, with auto execution on', () => {
@@ -37,17 +37,17 @@ functionToStringSuite('throw error for arrow function to string', () => {
   throws(() => functionToString(addFunc));
 });
 
-const combineExecutablesSuite = suite('combineExecutables');
-combineExecutablesSuite('combine two functions', () => {
+const combineInlinesSuite = suite('combineInlines');
+combineInlinesSuite('combine two functions', () => {
   function addFunc(): number {
     return 1 + 2;
   }
   function subFunc(): number {
     return 1 - 2;
   }
-  const actual = combineExecutables([addFunc, subFunc]);
+  const actual = combineInlines([addFunc, subFunc]);
   const expected = `function addFunc(){return 1+2} addFunc(); function subFunc(){return 1-2} subFunc(); \n`;
   equal(actual.replace(/\s+/g, ' '), expected.replace(/\s+/g, ' '));
 });
-combineExecutablesSuite.run();
+combineInlinesSuite.run();
 functionToStringSuite.run();
