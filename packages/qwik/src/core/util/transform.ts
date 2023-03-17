@@ -42,19 +42,35 @@ export const encodeHTML = /*#__PURE__*/ (html: string): string => {
   });
 };
 
-/**
- * Convert a function to a string, and adds execution option.
- *
- * @param fn - Function to convert to string
- * @param execute - Whether to execute the function
- * @returns String
- */
-export const stringifyFunction = (fn: Function, execute = true) => {
-  let toStr = fn.toString();
-  if (execute) {
-    toStr = `${toStr}\n${fn.name}();`;
+// /**
+//  * Convert a function to a string, and adds execution option.
+//  *
+//  * @param fn - Function to convert to string
+//  * @param execute - Whether to execute the function
+//  * @returns String
+//  */
+// export const functionToString = (fn: Function, execute = true): string => {
+//   let toStr = fn.toString();
+//   if (execute) {
+//     const functionName = fn.name;
+//     toStr = `${toStr}\n${functionName ? functionName + '();' : ''}`;
+//   }
+//   return toStr.replace(/\s+/g, ' ').trim() + '\n';
+// };
+
+export const functionToString = (fn: Function, execute = true): string => {
+  let fnStr = fn.toString();
+
+  // No support for arrow functions as they don't have a name.
+  if (!fnStr.startsWith('function')) {
+    throw new Error('Arrow functions are not supported');
   }
-  return `${toStr}\n`;
+
+  if (execute) {
+    const functionName = fn.name;
+    fnStr = `${fnStr}\n${functionName ? functionName + '();' : ''}`;
+  }
+  return fnStr.replace(/\s+/g, ' ').trim() + '\n';
 };
 
 /**
@@ -68,7 +84,7 @@ export const stringifyFunction = (fn: Function, execute = true) => {
 export function combineExecutables(fns: (string | Function)[], execute = true): string {
   const reducer = (acc: string, fn: string | Function) => {
     if (typeof fn === 'function') {
-      return `${acc} ${stringifyFunction(fn, execute)} \n`;
+      return `${acc} ${functionToString(fn, execute)} \n`;
     } else if (typeof fn === 'string') {
       return `${acc} ${fn} \n`;
     }
