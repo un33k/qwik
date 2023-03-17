@@ -49,5 +49,6 @@ combineInlinesSuite('combine two functions', () => {
   const expected = `function addFunc(){return 1+2} addFunc(); function subFunc(){return 1-2} subFunc(); \n`;
   equal(actual.replace(/\s+/g, ' '), expected.replace(/\s+/g, ' '));
 });
+
 combineInlinesSuite.run();
 functionToStringSuite.run();
