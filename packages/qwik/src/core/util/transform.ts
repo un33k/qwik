@@ -34,7 +34,7 @@ export const combineInlines = (fns: (string | Function)[], execute = true): stri
     if (typeof fn === 'function') {
       return `${acc}${functionToString(fn, execute)}`;
     } else if (typeof fn === 'string') {
-      return `${acc}${fn}`;
+      return `${acc} ${fn}`;
     }
     throw new Error('Invalid argument type for combineInlines');
   }, '');

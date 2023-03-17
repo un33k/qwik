@@ -62,5 +62,15 @@ combineInlinesSuite('combine two functions without execution option', () => {
   equal(actual.replace(/\s+/g, ' '), expected.replace(/\s+/g, ' '));
 });
 
+combineInlinesSuite('combine one functions and a some string', () => {
+  function addFunc(): number {
+    return 1 + 2;
+  }
+  const runThis = 'document.documentElement.classList.add("dark");';
+  const actual = combineInlines([addFunc, runThis]);
+  const expected = `function addFunc(){return 1+2} addFunc(); document.documentElement.classList.add("dark");\n`;
+  equal(actual.replace(/\s+/g, ' '), expected.replace(/\s+/g, ' '));
+});
+
 combineInlinesSuite.run();
 functionToStringSuite.run();
