@@ -71,10 +71,10 @@ export default component$(() => {
 
 The example above demonstrates how useSignal() can be employed in a counter component to monitor the count. When the count.value property is modified, the component automatically updates. This can be observed in the button click handler in the example, where altering the property triggers the update.
 
-> **NOTE**
+> **Note**
 > In situations where a component requires multiple signals, managing each signal as an independent state may not be desirable. In such cases, it is recommended to use `useStore()` instead.
 
-> **NOTE**
+> **Note**
 > To ensure proper reactivity, it is important to maintain a reference to the reactive object rather than just its `.value` property. For instance, if you execute `let { value } = useSignal(0)` and then mutate `value`, it will not cause updates in components that depend on the property. Make sure to keep a reference to the reactive object itself.
 
 ## `useStore()`
@@ -83,7 +83,7 @@ The example above demonstrates how useSignal() can be employed in a counter comp
 
 To create a reactive object, use the `useStore(initialStateObject)` function, (aka hook). This hook takes an initial object and returns a reactive object.  Alternatively, `userStore(() => initialStateObject)` can be used to create a reactive object lazily.
 
-> **NOTE**
+> **Note**
 > To ensure proper reactivity, it is important to maintain a reference to the reactive object rather than just its properties. For instance, if you execute `let { count } = useStore({ count: 0 })` and then mutate `count`, it will not cause updates in components that depend on the property. Make sure to keep a reference to the reactive object itself.
 
 <CodeSandbox src="/src/routes/demo/state/counter-store/index.tsx" style={{ height: '6em' }} >
@@ -143,7 +143,7 @@ store.nested = { fields: { are: 'tracked' } };
 
 While tracking top-level properties is the default behavior and suits most use cases, there might be instances where tracking changes to nested properties is required. In such cases, pass a second argument to `useStore(initialStateObject, { deep: true })` to enable recursion for tracking all the nested values in the store.
 
-> **NOTE**
+> **Note**
 > There is no recursion `depth limit` when passing `{ deep: true }`. That being said, it is recommended to use this option only when necessary, as tracking `extremely deep` nested properties can have performance implications.
 
 <CodeSandbox src="/src/routes/demo/state/counter-store-deep/index.tsx" style={{ height: '10em' }}>
