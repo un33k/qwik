@@ -137,7 +137,7 @@ export default component$(() => {
 The example above demonstrates how the default tracking strategy does not track changes to nested properties. To make the above example work, we would have to update the top-level `nested` field like so:
 
 ```ts
-// nested is a top-level property that is an object itself, and it will be replaced with a new object
+// `nested` is a top-level property that is an object itself, and it will be replaced with a new object
 store.nested = { fields: { are: 'tracked' } };
 ```
 
