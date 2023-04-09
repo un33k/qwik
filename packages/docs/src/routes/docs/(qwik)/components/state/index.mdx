@@ -155,7 +155,7 @@ export default component$(() => {
     {
       nested: { fields: { are: 'not tracked' } },
     },
-    { deep: true } // no recursion `depth limit`
+    { deep: true } // warning: no recursion `depth limit`
   );
 
   return (
